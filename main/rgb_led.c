@@ -27,19 +27,19 @@ static void rgb_led_pwm_init(void)
 	// Red
 	ledc_ch[0].channel		= LEDC_CHANNEL_0;
 	ledc_ch[0].gpio			= RGB_LED_RED_GPIO;
-	ledc_ch[0].mode			= LEDC_HIGH_SPEED_MODE;
+	ledc_ch[0].mode			= LEDC_LOW_SPEED_MODE;
 	ledc_ch[0].timer_index	= LEDC_TIMER_0;
 
 	// Green
 	ledc_ch[1].channel		= LEDC_CHANNEL_1;
 	ledc_ch[1].gpio			= RGB_LED_GREEN_GPIO;
-	ledc_ch[1].mode			= LEDC_HIGH_SPEED_MODE;
+	ledc_ch[1].mode			= LEDC_LOW_SPEED_MODE;
 	ledc_ch[1].timer_index	= LEDC_TIMER_0;
 
 	// Blue
 	ledc_ch[2].channel		= LEDC_CHANNEL_2;
 	ledc_ch[2].gpio			= RGB_LED_BLUE_GPIO;
-	ledc_ch[2].mode			= LEDC_HIGH_SPEED_MODE;
+	ledc_ch[2].mode			= LEDC_LOW_SPEED_MODE;
 	ledc_ch[2].timer_index	= LEDC_TIMER_0;
 
 	// Configure timer zero
@@ -47,7 +47,7 @@ static void rgb_led_pwm_init(void)
 	{
 		.duty_resolution	= LEDC_TIMER_8_BIT,
 		.freq_hz			= 100,
-		.speed_mode			= LEDC_HIGH_SPEED_MODE,
+		.speed_mode			= LEDC_LOW_SPEED_MODE,
 		.timer_num			= LEDC_TIMER_0
 	};
 	ledc_timer_config(&ledc_timer);
@@ -94,7 +94,7 @@ void rgb_led_wifi_app_started(void)
 		rgb_led_pwm_init();
 	}
 
-	rgb_led_set_color(255, 102, 255);
+	rgb_led_set_color(255, 0, 0); //red
 }
 
 void rgb_led_http_server_started(void)
@@ -104,7 +104,7 @@ void rgb_led_http_server_started(void)
 		rgb_led_pwm_init();
 	}
 
-	rgb_led_set_color(204, 255, 51);
+	rgb_led_set_color(0, 255, 0); //green
 }
 
 
@@ -115,7 +115,7 @@ void rgb_led_wifi_connected(void)
 		rgb_led_pwm_init();
 	}
 
-	rgb_led_set_color(0, 255, 153);
+	rgb_led_set_color(0, 0, 255); //blue
 }
 
 
