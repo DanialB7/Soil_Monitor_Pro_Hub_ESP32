@@ -43,14 +43,9 @@
 #define AWS_IOT_TASK_PRIORITY				6
 #define AWS_IOT_TASK_CORE_ID				1
 
-// LoRa Transmit Task
-#define LORA_TX_TASK_STACK_SIZE				4096
-#define LORA_TX_TASK_PRIORITY				7
-#define LORA_TX_TASK_CORE_ID				1
-
 // LoRa Receive Task
-#define LORA_RX_TASK_STACK_SIZE				4096
-#define LORA_RX_TASK_PRIORITY				7
+#define LORA_RX_TASK_STACK_SIZE				2048
+#define LORA_RX_TASK_PRIORITY				3
 #define LORA_RX_TASK_CORE_ID				1
 
 

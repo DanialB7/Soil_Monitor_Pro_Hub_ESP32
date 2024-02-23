@@ -9,7 +9,6 @@
 #include "DHT22.h"
 #include "sntp_time_sync.h"
 #include "wifi_app.h"
-#include "lora.h"
 #include "wifi_reset_button.h"
 #include "lora_comm.h"
 
@@ -33,8 +32,12 @@ void app_main(void)
 	}
 	ESP_ERROR_CHECK(ret);
 
+	lora_start();
+
 	// Start Wifi
 	wifi_app_start();
+
+	// Start loRa communication
 
 	// Configure Wifi reset button
 	wifi_reset_button_config();
@@ -45,7 +48,6 @@ void app_main(void)
 	// Set connected event callback
 	wifi_app_set_callback(&wifi_application_connected_events);
 
-	// Start loRa communication
-	lora_start();
+
 }
 

@@ -145,7 +145,9 @@ void aws_iot_task(void *param) {
 
     ESP_LOGI(TAG, "Connecting to AWS...");
     do {
+    	ESP_LOGI(TAG, "Entering MQTT");
         rc = aws_iot_mqtt_connect(&client, &connectParams);
+        ESP_LOGI(TAG, "EXIT MQTT");
         if(SUCCESS != rc) {
             ESP_LOGE(TAG, "Error(%d) connecting to %s:%d", rc, mqttInitParams.pHostURL, mqttInitParams.port);
             vTaskDelay(1000 / portTICK_PERIOD_MS);
@@ -193,7 +195,7 @@ void aws_iot_task(void *param) {
         }
 
         ESP_LOGI(TAG, "Stack remaining for task '%s' is %d bytes", pcTaskGetName(NULL), uxTaskGetStackHighWaterMark(NULL));
-        vTaskDelay(10000 / portTICK_PERIOD_MS); //how often to send data
+        vTaskDelay(6000 / portTICK_PERIOD_MS); //how often to send data
         sprintf(cPayload, "%s : %d ", "WiFi RSSI", wifi_app_get_rssi()); //wifi strength
         paramsQOS0.payloadLen = strlen(cPayload);
         rc = aws_iot_mqtt_publish(&client, TOPIC, TOPIC_LEN, &paramsQOS0);

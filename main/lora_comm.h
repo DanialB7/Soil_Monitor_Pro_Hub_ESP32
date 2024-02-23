@@ -8,15 +8,11 @@
 #ifndef MAIN_LORA_COMM_H_
 #define MAIN_LORA_COMM_H_
 
-/**
- *  LoRa transmit function
- */
-void task_tx(void *p);
 
 /**
  *  LoRa receive function
  */
-void task_rx(void *p);
+void task_rx(void *param);
 
 /**
  * Starting the LoRa process
